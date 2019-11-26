@@ -2,9 +2,9 @@
 
 
 class HashTable:
-    """hash tabe implementation"""
+    """hash table implementation"""
     def __init__(self):
-        self.hash_table = [None] * 20
+        self.hash_table = [[]] * 10
 
     @staticmethod
     def hash_(val: int) -> int:
@@ -13,8 +13,14 @@ class HashTable:
 
     def get(self, key: int) -> int:
         """get value from table by key"""
-        return self.hash_table[key]
+        hashed = self.hash_(key)
+        for element in self.hash_table[hashed]:
+            if element[0] == key:
+                return element[1]
+        #  for mypy
+        return False
 
     def set(self, key: int, value: int) -> None:
         """add value by key"""
-        self.hash_table[key] = value
+        hashed = self.hash_(key)
+        self.hash_table[hashed].append((key, value))
