@@ -3,7 +3,9 @@
 class HashTable:
     """Hash class"""
     def __init__(self):
-        self.array = [None] * 10
+        self.array = []
+        for _ in range(10):
+            self.array.append({})
 
     @staticmethod
     def hash_(key: int) -> int:
@@ -11,10 +13,7 @@ class HashTable:
         :param key: key
         :return: hashes key
         """
-        result_key = 0
-        for i in str(key):
-            result_key += int(i)+1
-        return result_key % 10
+        return key % 10
 
     def get(self, key: int):
         """
@@ -22,7 +21,11 @@ class HashTable:
         :return: hash element
         """
         index = self.hash_(key)
+        print(self.array)
+        if self.array[index]:
+            return self.array[index][key]
         return self.array[index]
+
 
     def set(self, key, value) -> None:
         """
@@ -30,4 +33,4 @@ class HashTable:
         :param value: value for hash table
         """
         index = self.hash_(key)
-        self.array[index] = value
+        self.array[index][key] = value
