@@ -1,14 +1,19 @@
+"""module docstring"""
 class HashTable:
+    """class docstring"""
     def __init__(self):
-        pass
+        """docstring"""
+        self.hashtable = {}
 
-    def hash_(self, x: int) -> int:
-        return x%10
+    @staticmethod
+    def hash(init_value):
+        """docstring"""
+        return init_value % 10
 
-    def get(self, key: int) -> int:
+    def get(self, key):
+        """docstring"""
+        return self.hashtable[hash(key)]
 
-        return 42
-
-    def set(self, key: int, value: int) -> None:
-
-        pass
+    def set(self, key, value):
+        """docstring"""
+        self.hashtable[hash(key)] = value
