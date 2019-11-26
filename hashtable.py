@@ -1,14 +1,33 @@
+"""Hash module"""
+
 class HashTable:
+    """Hash class"""
     def __init__(self):
-        pass
+        self.array = [None] * 10
 
-    def hash_(self, x: int) -> int:
-        return x%10
+    @staticmethod
+    def hash_(key: int) -> int:
+        """
+        :param key: key
+        :return: hashes key
+        """
+        result_key = 0
+        for i in str(key):
+            result_key += int(i)+1
+        return result_key % 10
 
-    def get(self, key: int) -> int:
+    def get(self, key: int):
+        """
+        :param key: key
+        :return: hash element
+        """
+        index = self.hash_(key)
+        return self.array[index]
 
-        return 42
-
-    def set(self, key: int, value: int) -> None:
-
-        pass
+    def set(self, key, value) -> None:
+        """
+        :param key: key
+        :param value: value for hash table
+        """
+        index = self.hash_(key)
+        self.array[index] = value
