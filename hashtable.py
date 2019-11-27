@@ -10,18 +10,20 @@ class HashTable:
     def __init__(self):
         self.hash_table = [[] for _ in range(10)]
 
-    def hash_(self, num: int) -> int:
+    @staticmethod
+    def hash_(num: int) -> int:
         """Func"""
         return num % 10
 
-    def get(self, key: int) -> int:
+    def get(self, key):
         """Get value"""
         hash_key = self.hash_(key)
         bucket = self.hash_table[hash_key]
-        for i, kv in enumerate(bucket):
-            k, v = kv
-            if key == k:
-                return v
+        for _, key_value in enumerate(bucket):
+            bucket_key, bucket_value = key_value
+            if key == bucket_key:
+                return bucket_value
+        return None
 
     def set(self, key: int, value: int) -> None:
         """Set value"""
@@ -29,12 +31,13 @@ class HashTable:
         hash_key = self.hash_(key)
         key_exists = False
         bucket = self.hash_table[hash_key]
-        for i, kv in enumerate(bucket):
-            k, v = kv
-            if key == k:
+        count = 0
+        for count, key_value in enumerate(bucket):
+            bucket_key, _ = key_value
+            if key == bucket_key:
                 key_exists = True
                 break
         if key_exists:
-            bucket[i] = ((key, value))
+            bucket[count] = ((key, value))
         else:
             bucket.append((key, value))
