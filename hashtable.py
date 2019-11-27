@@ -4,7 +4,7 @@
 class HashTable:
     """hash table implementation"""
     def __init__(self):
-        self.hash_table = [[]] * 10
+        self.hash_table = [[] for _ in range(10)]
 
     @staticmethod
     def hash_(val: int) -> int:
