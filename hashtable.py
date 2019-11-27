@@ -9,29 +9,28 @@ class HashTable:
     """
 
     def __init__(self):
-        self.table = []
-        self.size = 10
-        for _ in range(self.size):
-            self.table.append({})
+        self.table = [[] for _ in range(10)]
 
-    def hash_(self, key: int) -> int:
+    @staticmethod
+    def hash_(key: int) -> int:
         """
-
+        Hashing key value.
         :param key: int
         :return: int
         """
         return key % 10
 
-    def get(self, key: int) -> dict:
+    def get(self, key: int):
         """
         Get object with key from hash table.
         :param key: int
         :return: None
         """
-        hash_key = self.hash_(key)
-        if self.table[hash_key]:
-            return self.table[hash_key][key]
-        return self.table[hash_key]
+        index = self.hash_(key)
+        for keys, val in self.table[index]:
+            if keys == key:
+                return val
+        return "No such key."
 
     def set(self, key: int, value: int) -> None:
         """
@@ -40,5 +39,5 @@ class HashTable:
         :param value: int
         :return: None
         """
-        hash_key = self.hash_(key)
-        self.table[hash_key][key] = value
+        index = self.hash_(key)
+        self.table[index].append((key, value))
