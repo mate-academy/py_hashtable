@@ -9,7 +9,7 @@ class HashTable:
     @staticmethod
     def hash_(key: int) -> int:
         """Hash funct"""
-        return key%10
+        return key % 10
 
     def get(self, key: int) -> int:
         """Get value by key"""
