@@ -1,14 +1,21 @@
-class HashTable:
-    def __init__(self):
-        pass
+"""module"""
 
-    def hash_(self, x: int) -> int:
-        return x%10
+
+class HashTable:
+    """hashtable"""
+    def __init__(self):
+        self.table = [None] * 100
+
+    def hash_(self, item: int) -> int:
+        """generate hash"""
+        return item % len(self.table)
 
     def get(self, key: int) -> int:
-
-        return 42
+        """get item"""
+        hash_key = self.hash_(key)
+        return self.table[hash_key]
 
     def set(self, key: int, value: int) -> None:
-
-        pass
+        """set item"""
+        hash_key = self.hash_(key)
+        self.table[hash_key] = value

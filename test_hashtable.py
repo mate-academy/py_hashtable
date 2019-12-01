@@ -9,7 +9,7 @@ def test_hashtable1():
     assert h.get(1) == 1
 
 
-def test_hashtable1():
+def test_hashtable3():
     h = hashtable.HashTable()
     h.set(1, 1)
     h.set(11, 2)
