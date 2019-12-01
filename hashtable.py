@@ -1,14 +1,20 @@
+"""module docstring"""
+from typing import List
+
 class HashTable:
-    def __init__(self):
-        pass
+    """class docstring"""
 
-    def hash_(self, x: int) -> int:
-        return x%10
+    hash_index = 10
+    hashtable = [[] for x in range(hash_index)] # type: List[List[int]]
 
-    def get(self, key: int) -> int:
+    def hash(self, key):
+        """docstring"""
+        return key % self.hash_index
 
-        return 42
+    def get(self, key):
+        """docstring"""
+        return [x[1] for x in self.hashtable[self.hash(key)] if x[0] == key][0]
 
-    def set(self, key: int, value: int) -> None:
-
-        pass
+    def set(self, key, value):
+        """docstring"""
+        self.hashtable[self.hash(key)].append((key, value))

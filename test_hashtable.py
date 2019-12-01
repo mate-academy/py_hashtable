@@ -1,7 +1,7 @@
 import hashtable
 
 
-def test_hashtable1():
+def test_hashtable():
     h = hashtable.HashTable()
     h.set(1, 1)
     h.set(11, 2)
